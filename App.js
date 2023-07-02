@@ -11,8 +11,9 @@ export default function App() {
   const [userInfo, setUserInfo] = React.useState(null);
   const [request, response, promptAsync] = Google.useAuthRequest({
     webClientId: "643417147366-pifqmn3462kv5tsaggijnghokdk198vv.apps.googleusercontent.com",
-    iosClientId: "643417147366-0k4034693h56h9bnlm4b2m6jtq5nr2bv.apps.googleusercontent.com"
-  })
+    iosClientId: "643417147366-0k4034693h56h9bnlm4b2m6jtq5nr2bv.apps.googleusercontent.com",
+    expoClientId: "643417147366-foop8bi1bc6kl7jcpf65avf3okuatcu2.apps.googleusercontent.com"
+  });
 
   React.useEffect(() => {
     handleSignInWithGoogle();
@@ -34,7 +35,7 @@ export default function App() {
       const response = await fetch(
         "https://www.googleapis.com/userinfo/v2/me",
         {
-          headrs: { Authorization: `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
       const user = await response.json();
@@ -44,8 +45,9 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <Text>{JSON.stringify(userInfo)}</Text>
-       <Button title="Sign in with Google" onPress={promptAsync} /> 
+      <Text>{JSON.stringify(userInfo, null, 2)}</Text>
+       <Button title="Sign in with Google" onPress={() => promptAsync()} />
+       <Button title='delete local storage' onPress={() => AsyncStorage.removeItem("@user")}/> 
       <StatusBar style="auto" />
     </View>
   );
