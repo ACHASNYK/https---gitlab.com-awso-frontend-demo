@@ -15,7 +15,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "com.googleusercontent.apps.643417147366-0k4034693h56h9bnlm4b2m6jtq5nr2bv"
+            ]
+          }
+        ]
+      },
+      "bundleIdentifier": "com.anonymous.awfront"
     },
     "android": {
       "adaptiveIcon": {
@@ -26,6 +36,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b06e3849-de25-4dcb-98fe-4cacd5c56a5e"
+      }
     }
   }
 }
